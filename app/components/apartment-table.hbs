@@ -8,13 +8,15 @@
         <th>Connected Bathrooms</th>
         <th>Porch</th>
     </tr>
-    <tr>
-        <td>example name</td>
-        <td><ApartmentTable::TableInput /></td>
-        <td><ApartmentTable::TableInput @rent={{true}} /></td>
-        <td><ApartmentTable::TableButtons /></td>
-        <td><ApartmentTable::TableButtons /></td>
-        <td><ApartmentTable::TableButtons /></td>
-        <td><ApartmentTable::TableButtons /></td>
-    </tr>
+    {{#each @model as |apartment|}}
+        <tr>
+            <td>{{apartment.name}}</td>
+            <td><ApartmentTable::TableInput @value={{apartment.availability}} /></td>
+            <td><ApartmentTable::TableInput @rent={{true}} @value={{apartment.rent}} /></td>
+            <td><ApartmentTable::TableButtons @value={{apartment.washerDryer}} /></td>
+            <td><ApartmentTable::TableButtons @value={{apartment.twoBathrooms}} /></td>
+            <td><ApartmentTable::TableButtons @value={{apartment.connectedBathrooms}} /></td>
+            <td><ApartmentTable::TableButtons @value={{apartment.porch}} /></td>
+        </tr>
+    {{/each}}
 </table>

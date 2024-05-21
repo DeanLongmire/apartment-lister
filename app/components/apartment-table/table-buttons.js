@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class ApartmentTableTableButtonsComponent extends Component {
-  @tracked isPressed = false;
+  @tracked isPressed = this.args.value;
 
   @action
   pressed() {
