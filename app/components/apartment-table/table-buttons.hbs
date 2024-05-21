@@ -1,0 +1,9 @@
+{{#if this.isPressed}}
+    <button class="table-button-pressed" type="button" onclick={{this.pressed}}>
+        &#x2713;
+    </button>
+{{else}}
+    <button class="table-button" type="button" onclick={{this.pressed}}>
+        X
+    </button>
+{{/if}}
