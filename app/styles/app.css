@@ -1,1 +1,30 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+td {
+  padding: none;
+}
+
+.table-button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  color: red;
+  background-color: pink;
+}
+
+.table-button-pressed {
+  height: 100%;
+  width: 100%;
+  border: none;
+  color: darkgreen;
+  background-color: palegreen;
+}
+
+.table-button:hover {
+  font-weight: bold;
+}
