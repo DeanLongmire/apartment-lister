@@ -1,13 +1,10 @@
 import Route from '@ember/routing/route';
 
 export default class ApplicationRoute extends Route {
-    data;
+    async model() {
+        const response = await fetch("/db.json");
+        const data = await response.json()
 
-    async beforeModel() {
-        this.data = (await fetch("/db.json")).json();
-    }
-
-    model() {
-        return this.data;
+        return data.apartments;
     }
 }
