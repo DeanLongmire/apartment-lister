@@ -23,4 +23,22 @@ export default class DatabaseService extends Service {
       throw error;
     }
   }
+
+  async delete(id) {
+    try {
+      const response = await fetch(`http://localhost:5000/apartments/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete data');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error deleting data:', error);
+      throw error;
+    }
+  }
 }
