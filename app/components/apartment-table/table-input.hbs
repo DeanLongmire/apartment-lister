@@ -2,5 +2,5 @@
   {{#if @rent}}
     <label>$</label>
   {{/if}}
-  <input type="text" class="table-input" value={{@value}}>
+  <input type="text" class="table-input" value={{@value}} {{on "input" this.handleInput}} {{on "blur" this.update}}>
 </div>

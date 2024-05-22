@@ -11,7 +11,6 @@ export default class ApartmentTableTableButtonsComponent extends Component {
   pressed() {
     this.isPressed = !this.isPressed;
     
-    let tableData = this.args.model;
     let rowEntryName = this.args.entry;
 
     const body = {

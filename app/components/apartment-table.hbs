@@ -11,8 +11,8 @@
     {{#each @model as |apartment|}}
         <tr>
             <td>{{apartment.name}}</td>
-            <td><ApartmentTable::TableInput @model={{@model}} @value={{apartment.availability}} @entry={{apartment.name}} @column="washerDryer" /></td>
-            <td><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="twoBathrooms" /></td>
+            <td><ApartmentTable::TableInput @model={{@model}} @value={{apartment.availability}} @entry={{apartment.name}} @column="availability" /></td>
+            <td><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
             <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.washerDryer}} @entry={{apartment.name}} @column="washerDryer" /></td>
             <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.twoBathrooms}} @entry={{apartment.name}} @column="twoBathrooms" /></td>
             <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.connectedBathrooms}} @entry={{apartment.name}} @column="connectedBathrooms" /></td>
