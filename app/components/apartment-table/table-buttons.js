@@ -10,13 +10,13 @@ export default class ApartmentTableTableButtonsComponent extends Component {
   @action
   pressed() {
     this.isPressed = !this.isPressed;
-    
+
     let rowEntryName = this.args.entry;
 
     const body = {
       valueToUpdate: this.args.column,
-      value: this.isPressed
-    }
+      value: this.isPressed,
+    };
 
     this.database.update(body, rowEntryName);
   }

@@ -25,8 +25,24 @@ td {
   background-color: palegreen;
 }
 
+.table-button-pressed:hover {
+  font-weight: bold;
+}
+
 .table-button:hover {
   font-weight: bold;
+}
+
+.table-drop-button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: white;
+}
+
+.table-drop-button:hover {
+  font-weight: bold;
+  background-color: #EBEBEB;
 }
 
 .table-input {

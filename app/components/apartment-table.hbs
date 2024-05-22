@@ -1,5 +1,6 @@
 <table style="width:100%">
     <tr>
+        <th style="padding-left: 25px;"></th>
         <th>Apartment Complex</th>
         <th>Availability</th>
         <th>Rent</th>
@@ -10,6 +11,7 @@
     </tr>
     {{#each @model as |apartment|}}
         <tr>
+            <td><DropButton /></td>
             <td>{{apartment.name}}</td>
             <td><ApartmentTable::TableInput @model={{@model}} @value={{apartment.availability}} @entry={{apartment.name}} @column="availability" /></td>
             <td><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
