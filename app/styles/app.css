@@ -33,6 +33,17 @@ td {
   font-weight: bold;
 }
 
+.table-add-button {
+  background-color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.table-add-button:hover {
+  border-style: double;
+  background-color: #ebebeb;
+}
+
 .table-drop-button {
   height: 100%;
   width: 100%;
@@ -42,7 +53,7 @@ td {
 
 .table-drop-button:hover {
   font-weight: bold;
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 
 .table-input {

@@ -10,15 +10,15 @@ module('Integration | Component | drop-button', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<DropButton />`);
+    await render(hbs`<ApartmentTable::DropButton />`);
 
     assert.dom(this.element).hasText('');
 
     // Template block usage:
     await render(hbs`
-      <DropButton>
+      <ApartmentTable::DropButton>
         template block text
-      </DropButton>
+      </ApartmentTable::DropButton>
     `);
 
     assert.dom(this.element).hasText('template block text');

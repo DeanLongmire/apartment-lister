@@ -11,7 +11,7 @@
     </tr>
     {{#each @model as |apartment|}}
         <tr>
-            <td><DropButton /></td>
+            <td><ApartmentTable::DropButton /></td>
             <td>{{apartment.name}}</td>
             <td><ApartmentTable::TableInput @model={{@model}} @value={{apartment.availability}} @entry={{apartment.name}} @column="availability" /></td>
             <td><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
@@ -22,3 +22,5 @@
         </tr>
     {{/each}}
 </table>
+
+<ApartmentTable::AddButton />
