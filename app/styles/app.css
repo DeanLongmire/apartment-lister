@@ -30,14 +30,14 @@ td {
 }
 
 .table-input {
-    height: 100%;
-    width: 100%;
-    border: none;
+  height: 100%;
+  width: 100%;
+  border: none;
 }
 
 .table-input:focus-visible {
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
 }
