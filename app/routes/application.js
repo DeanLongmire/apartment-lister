@@ -10,7 +10,7 @@ export default class ApplicationRoute extends Route {
     const response = await this.database.get();
     const data = await response.json();
 
-    data.forEach(item => {
+    data.forEach((item) => {
       this.store.createRecord('apartment', {
         id: item.name,
         name: item.name,
@@ -18,7 +18,7 @@ export default class ApplicationRoute extends Route {
         washerDryer: item.washerDryer,
         twoBathrooms: item.twoBathrooms,
         connectedBathrooms: item.connectedBathrooms,
-        porch: item.porch
+        porch: item.porch,
       });
     });
 
