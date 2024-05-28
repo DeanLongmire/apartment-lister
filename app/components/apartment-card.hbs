@@ -1,0 +1,46 @@
+<div class="card-modal">
+    <div class="card-body">
+        <div style="text-align: center;">
+            {{this.apartment.name}}
+        </div>
+        <div class="card-input-groupings">
+            <div class="card-input-content">
+                Availability
+                <div style="max-width: 90%; margin: auto; border: thin; border-style: solid;">
+                    <ApartmentTable::TableInput @model={{@model}} @value={{this.apartment.availability}} @entry={{this.apartment.name}} @column="availability" />
+                </div>
+            </div>
+            <div class="card-input-content">
+                Rent
+                <div style="max-width: 90%; margin: auto; border: thin; border-style: solid;">
+                    <ApartmentTable::TableInput @model={{@model}} @value={{this.apartment.rent}} @entry={{this.apartment.name}} @column="rent" @rent={{true}}/>
+                </div>
+            </div>
+        </div>
+        <div class="card-table-container">
+            <div class="card-table-content">
+                <table>
+                    <tr>
+                        <th style="text-align: left; padding-right: 20px; font-weight: normal;">Washer/Dryer</th>
+                        <td><ApartmentTable::TableButtons @model={{@model}} @value={{this.apartment.washerDryer}} @entry={{this.apartment.name}} @column="washerDryer" /></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left; padding-right: 20px; font-weight: normal;">Two Bathrooms</th>
+                        <td><ApartmentTable::TableButtons @model={{@model}} @value={{this.apartment.twoBathrooms}} @entry={{this.apartment.name}} @column="twoBathrooms" /></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left; padding-right: 20px; font-weight: normal;">Connected Bathrooms</th>
+                        <td><ApartmentTable::TableButtons @model={{@model}} @value={{this.apartment.connectedBathrooms}} @entry={{this.apartment.name}} @column="connectedBathrooms" /></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left; padding-right: 20px; font-weight: normal;">Porch</th>
+                        <td><ApartmentTable::TableButtons @model={{@model}} @value={{this.apartment.porch}} @entry={{this.apartment.name}} @column="porch" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="margin-top: 15px; margin-bottom: 15px; padding: 4px; background-color:darkgray;" {{on "click" (fn @closeCard)}}>
+                X
+            </div>
+        </div>
+    </div>
+</div>

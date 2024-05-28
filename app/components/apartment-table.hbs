@@ -1,26 +1,45 @@
-<table style="width:100%">
+<table class="table-component" style="width:100%">
     <tr>
-        <th style="padding-left: 25px;"></th>
-        <th><div class="sort-button" onclick={{this.sortByName}}>Apartment Complex</div></th>
-        <th>Availability</th>
-        <th><div class="sort-button" onclick={{this.sortByRent}}>Rent</div></th>
-        <th><div class="sort-button" onclick={{this.sortByChecks}}>Washer/Dryer</div></th>
-        <th>Two Bathrooms</th>
-        <th>Connected Bathrooms</th>
-        <th>Porch</th>
+        <th class="table-component" style="padding-left: 25px;"></th>
+        <th class="table-component"><div class="sort-button" onclick={{this.sortByName}}>Apartment Complex</div></th>
+        <th class="table-component">Availability</th>
+        <th class="table-component"><div class="sort-button" onclick={{this.sortByRent}}>Rent</div></th>
+        <th class="table-component"><div class="sort-button" onclick={{this.sortByChecks}}>Washer/Dryer</div></th>
+        <th class="table-component">Two Bathrooms</th>
+        <th class="table-component">Connected Bathrooms</th>
+        <th class="table-component">Porch</th>
     </tr>
     {{#each this.apartments as |apartment|}}
         <tr>
-            <td><ApartmentTable::DropButton @entry={{apartment.name}} /></td>
-            <td>{{apartment.name}}</td>
-            <td><ApartmentTable::TableInput @model={{@model}} @value={{apartment.availability}} @entry={{apartment.name}} @column="availability" /></td>
-            <td><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
-            <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.washerDryer}} @entry={{apartment.name}} @column="washerDryer" /></td>
-            <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.twoBathrooms}} @entry={{apartment.name}} @column="twoBathrooms" /></td>
-            <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.connectedBathrooms}} @entry={{apartment.name}} @column="connectedBathrooms" /></td>
-            <td><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.porch}} @entry={{apartment.name}} @column="porch" /></td>
+            <td class="table-component table-td"><ApartmentTable::DropButton @entry={{apartment.name}} /></td>
+            <td class="table-component table-td">{{apartment.name}}</td>
+            <td class="table-component table-td"><ApartmentTable::TableInput @model={{@model}} @value={{apartment.availability}} @entry={{apartment.name}} @column="availability" /></td>
+            <td class="table-component table-td"><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
+            <td class="table-component table-td"><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.washerDryer}} @entry={{apartment.name}} @column="washerDryer" /></td>
+            <td class="table-component table-td"><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.twoBathrooms}} @entry={{apartment.name}} @column="twoBathrooms" /></td>
+            <td class="table-component table-td"><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.connectedBathrooms}} @entry={{apartment.name}} @column="connectedBathrooms" /></td>
+            <td class="table-component table-td"><ApartmentTable::TableButtons @model={{@model}} @value={{apartment.porch}} @entry={{apartment.name}} @column="porch" /></td>
+        </tr>
+    {{/each}}
+</table>
+
+<table class="mobile-table" style="width: 100%;">
+    <tr>
+        <th class="mobile-table" style="padding-left: 25px;"></th>
+        <th class="mobile-table"><div class="sort-button" onclick={{this.sortByName}}>Apartment Complex</div></th>
+        <th class="mobile-table"><div class="sort-button" onclick={{this.sortByRent}}>Rent</div></th>
+    </tr>
+    {{#each this.apartments as |apartment|}}
+        <tr>
+            <td class="mobile-table"><ApartmentTable::DropButton @entry={{apartment.name}} /></td>
+            <td class="mobile-table"><div {{on "click" (fn this.openApartmentCard apartment)}}>{{apartment.name}}</div></td>
+            <td class="mobile-table"><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
         </tr>
     {{/each}}
 </table>
 
 <ApartmentTable::AddButton />
+
+{{#if this.cardIsOpen}}
+    <ApartmentCard @model={{@model}} @apartment={{this.selectedApartment}} @closeCard={{this.closeCard}} />
+{{/if}}

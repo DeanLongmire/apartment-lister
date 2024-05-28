@@ -8,9 +8,22 @@ export default class ApartmentTableComponent extends Component {
   @service store;
 
   @tracked apartments = A(this.args.model);
+  @tracked cardIsOpen = false;
+  @tracked selectedApartment = '';
 
   constructor() {
     super(...arguments);
+  }
+
+  @action
+  closeCard() {
+    this.cardIsOpen = false;
+  }
+
+  @action
+  openApartmentCard(apartment) {
+    this.cardIsOpen = true;
+    this.selectedApartment = apartment;
   }
 
   @action
@@ -56,7 +69,7 @@ export default class ApartmentTableComponent extends Component {
 
   @action
   sortByChecks() {
-    this.apartments = A(this.args.model)
+    this.apartments = A(this.args.model);
 
     this.apartments = this.apartments.slice().sort((a, b) => {
       if (a.numOfChecks == '') {
@@ -64,7 +77,6 @@ export default class ApartmentTableComponent extends Component {
       } else if (b.numOfChecks == '') {
         return -1;
       }
-
 
       if (a.numOfChecks < b.numOfChecks) {
         return 1;
