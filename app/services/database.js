@@ -7,13 +7,16 @@ export default class DatabaseService extends Service {
 
   async update(body, id) {
     try {
-      const response = await fetch(`https://apartment-lister-api.onrender.com/apartments/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        `https://apartment-lister-api.onrender.com/apartments/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        }
+      );
       if (!response.ok) {
         throw new Error('Failed to update data');
       }
@@ -27,12 +30,15 @@ export default class DatabaseService extends Service {
   async delete(id) {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await fetch(`https://apartment-lister-api.onrender.com/apartments/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const response = await fetch(
+          `https://apartment-lister-api.onrender.com/apartments/${id}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
         if (!response.ok) {
           throw new Error('Failed to delete data');
         }
@@ -49,23 +55,26 @@ export default class DatabaseService extends Service {
   async createApartment(name) {
     return new Promise(async (resolve, reject) => {
       try {
-          const response = await fetch(`https://apartment-lister-api.onrender.com/apartments`, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ name: name }),
-          });
-
-          if (!response.ok) {
-              throw new Error('Failed to create data');
+        const response = await fetch(
+          `https://apartment-lister-api.onrender.com/apartments`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: name }),
           }
+        );
 
-          const data = await response.json();
-          resolve(data);
+        if (!response.ok) {
+          throw new Error('Failed to create data');
+        }
+
+        const data = await response.json();
+        resolve(data);
       } catch (error) {
-          console.error('Error creating data:', error);
-          reject(error);
+        console.error('Error creating data:', error);
+        reject(error);
       }
     });
   }

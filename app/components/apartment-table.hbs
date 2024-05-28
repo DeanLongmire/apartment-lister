@@ -9,7 +9,7 @@
         <th>Connected Bathrooms</th>
         <th>Porch</th>
     </tr>
-    {{#each @model as |apartment|}}
+    {{#each this.apartments as |apartment|}}
         <tr>
             <td><ApartmentTable::DropButton @entry={{apartment.name}} /></td>
             <td>{{apartment.name}}</td>
