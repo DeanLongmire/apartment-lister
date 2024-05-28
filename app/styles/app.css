@@ -38,6 +38,11 @@
   width: 100%;
 }
 
+.sort-button:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
+
 table,
 th,
 td {
