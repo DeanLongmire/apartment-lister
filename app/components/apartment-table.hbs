@@ -1,13 +1,13 @@
 <table class="table-component" style="width:100%">
     <tr>
         <th class="table-component" style="padding-left: 25px;"></th>
-        <th class="table-component"><div class="sort-button" onclick={{this.sortByName}}>Apartment Complex</div></th>
+        <th class="table-component"><ApartmentTable::SortButton @sortFunction={{this.sortByName}} @filterValue={{this.nameFilter}}>Apartment Complex</ApartmentTable::SortButton></th>
         <th class="table-component">Availability</th>
-        <th class="table-component"><div class="sort-button" onclick={{this.sortByRent}}>Rent</div></th>
-        <th class="table-component"><div class="sort-button" onclick={{this.sortByChecks}}>Washer/Dryer</div></th>
-        <th class="table-component">Two Bathrooms</th>
-        <th class="table-component">Connected Bathrooms</th>
-        <th class="table-component">Porch</th>
+        <th class="table-component"><ApartmentTable::SortButton @sortFunction={{this.sortByRent}} @filterValue={{this.rentFilter}}>Rent</ApartmentTable::SortButton></th>
+        <th class="table-component"><ApartmentTable::SortButton @sortFunction={{this.advancedSort}} @filterValue={{this.washerDryerFilter}} @sortType="wd">Washer/Dryer</ApartmentTable::SortButton></th>
+        <th class="table-component"><ApartmentTable::SortButton @sortFunction={{this.advancedSort}} @filterValue={{this.twoBathroomsFilter}} @sortType="tb">Two Bathrooms</ApartmentTable::SortButton></th>
+        <th class="table-component"><ApartmentTable::SortButton @sortFunction={{this.advancedSort}} @filterValue={{this.connectedBathroomsFilter}} @sortType="cb">Connected Bathrooms</ApartmentTable::SortButton></th>
+        <th class="table-component"><ApartmentTable::SortButton @sortFunction={{this.advancedSort}} @filterValue={{this.porchFilter}} @sortType="p">Porch</ApartmentTable::SortButton></th>
     </tr>
     {{#each this.apartments as |apartment|}}
         <tr>

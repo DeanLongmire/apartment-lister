@@ -1,0 +1,9 @@
+{{#if @filterValue}}
+    <div class="sort-button-selected" {{on "click" (fn @sortFunction @sortType)}}>
+        {{yield}}
+    </div>
+{{else}}
+    <div class="sort-button" {{on "click" (fn @sortFunction @sortType)}}>
+        {{yield}}
+    </div>
+{{/if}}
