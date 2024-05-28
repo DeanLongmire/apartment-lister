@@ -41,4 +41,23 @@ export default class DatabaseService extends Service {
       throw error;
     }
   }
+
+  async createApartment(name) {
+    try {
+      const response = await fetch(`http://localhost:5000/apartments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name}),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to create data');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error creating data:', error);
+      throw error;
+    }
+  }
 }
