@@ -25,6 +25,7 @@ export default class ApplicationRoute extends Route {
         id: item.name,
         name: item.name,
         rent: item.rent,
+        numOfChecks: item.numOfChecks,
         washerDryer: item.washerDryer,
         twoBathrooms: item.twoBathrooms,
         connectedBathrooms: item.connectedBathrooms,
