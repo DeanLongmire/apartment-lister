@@ -8,13 +8,14 @@ export default class ApartmentTableDropButtonComponent extends Component {
   @service router;
 
   @action
-  drop() {
+  async drop() {
     let rowEntryName = this.args.entry;
 
-    this.database.delete(rowEntryName);
     let record = this.store.peekRecord('apartment', rowEntryName);
     record.deleteRecord();
 
-    window.location.reload();
+    await this.database.delete(rowEntryName).then(() => {
+      window.location.reload();
+    });
   }
 }

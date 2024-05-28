@@ -25,39 +25,48 @@ export default class DatabaseService extends Service {
   }
 
   async delete(id) {
-    try {
-      const response = await fetch(`https://apartment-lister-api.onrender.com/apartments/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete data');
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await fetch(`https://apartment-lister-api.onrender.com/apartments/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to delete data');
+        }
+
+        const data = await response.json();
+        resolve(data);
+      } catch (error) {
+        console.error('Error deleting data:', error);
+        reject(error);
       }
-      return await response.json();
-    } catch (error) {
-      console.error('Error deleting data:', error);
-      throw error;
-    }
+    });
   }
 
   async createApartment(name) {
-    try {
-      const response = await fetch(`https://apartment-lister-api.onrender.com/apartments`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: name}),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to create data');
+    return new Promise(async (resolve, reject) => {
+      try {
+          const response = await fetch(`https://apartment-lister-api.onrender.com/apartments`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ name: name }),
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to create data');
+          }
+
+          const data = await response.json();
+          resolve(data);
+      } catch (error) {
+          console.error('Error creating data:', error);
+          reject(error);
       }
-      return await response.json();
-    } catch (error) {
-      console.error('Error creating data:', error);
-      throw error;
-    }
+    });
   }
 }
