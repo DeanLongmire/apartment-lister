@@ -10,9 +10,12 @@ export default class ApartmentTableTableButtonsComponent extends Component {
   @service store;
 
   async calculateCheckCount(rowEntryName) {
-    let apartmentUpdating = await this.store.peekRecord('apartment', rowEntryName);
+    let apartmentUpdating = await this.store.peekRecord(
+      'apartment',
+      rowEntryName
+    );
 
-    if(this.isPressed == true) {
+    if (this.isPressed == true) {
       apartmentUpdating.numOfChecks = apartmentUpdating.numOfChecks + 1;
       return apartmentUpdating.numOfChecks;
     } else {
@@ -27,6 +30,10 @@ export default class ApartmentTableTableButtonsComponent extends Component {
 
     let rowEntryName = this.args.entry;
     const checkCount = await this.calculateCheckCount(rowEntryName);
+
+    let apartment = this.args.model.findBy('name', rowEntryName);
+    apartment[this.args.column] = this.isPressed;
+    apartment.numOfChecks = checkCount;
 
     const body = {
       valueToUpdate: this.args.column,
