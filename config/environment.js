@@ -4,7 +4,8 @@ module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'apartment-lister',
     environment,
-    rootURL: '/',
+    rootURL: '/apartment-lister',
+    baseURL: '/apartment-lister',
     locationType: 'history',
     EmberENV: {
       EXTEND_PROTOTYPES: false,
