@@ -16,6 +16,9 @@ export default class ApartmentTableTableInputComponent extends Component {
   update() {
     let rowEntryName = this.args.entry;
 
+    let apartment = this.args.model.findBy('name', rowEntryName);
+    apartment[this.args.column] = this.value;
+
     const body = {
       valueToUpdate: this.args.column,
       value: this.value,
