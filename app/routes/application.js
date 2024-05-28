@@ -8,7 +8,17 @@ export default class ApplicationRoute extends Route {
 
   async model() {
     const response = await this.database.get();
-    const data = await response.json();
+    let data = await response.json();
+
+    data = data.slice().sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      } else if (a.name > b.name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
 
     data.forEach((item) => {
       this.store.createRecord('apartment', {
