@@ -23,20 +23,24 @@
     {{/each}}
 </table>
 
-<table class="mobile-table" style="width: 100%;">
-    <tr>
-        <th class="mobile-table" style="padding-left: 25px;"></th>
-        <th class="mobile-table"><div class="sort-button" onclick={{this.sortByName}}>Apartment Complex</div></th>
-        <th class="mobile-table"><div class="sort-button" onclick={{this.sortByRent}}>Rent</div></th>
-    </tr>
-    {{#each this.apartments as |apartment|}}
-        <tr>
-            <td class="mobile-table"><ApartmentTable::DropButton @entry={{apartment.name}} /></td>
-            <td class="mobile-table"><div {{on "click" (fn this.openApartmentCard apartment)}}>{{apartment.name}}</div></td>
-            <td class="mobile-table"><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
-        </tr>
-    {{/each}}
-</table>
+<div style="display: flex; justify-content: center;">
+    <div style="width: 95vw; display: flex; justify-content: center;">
+        <table class="mobile-table">
+            <tr>
+                <th class="mobile-table" style="padding-left: 25px;"></th>
+                <th class="mobile-table"><div class="sort-button" style="font-size: 1.90vh;" onclick={{this.sortByName}}>Apartment Complex</div></th>
+                <th class="mobile-table"><div class="sort-button" style="font-size: 1.90vh;" onclick={{this.sortByRent}}>Rent</div></th>
+            </tr>
+            {{#each this.apartments as |apartment|}}
+                <tr>
+                    <td class="mobile-table"><ApartmentTable::DropButton @entry={{apartment.name}} /></td>
+                    <td class="mobile-table"><div style="font-size: 1.90vh;" {{on "click" (fn this.openApartmentCard apartment)}}>{{apartment.name}}</div></td>
+                    <td class="mobile-table"><ApartmentTable::TableInput @rent={{true}} @model={{@model}} @value={{apartment.rent}} @entry={{apartment.name}} @column="rent" /></td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
 
 <ApartmentTable::AddButton />
 
