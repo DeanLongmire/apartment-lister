@@ -2,12 +2,12 @@ import Service from '@ember/service';
 
 export default class DatabaseService extends Service {
   async get() {
-    return await fetch('http://localhost:5000/apartments');
+    return await fetch('https://apartment-lister-api.onrender.com/apartments');
   }
 
   async update(body, id) {
     try {
-      const response = await fetch(`http://localhost:5000/apartments/${id}`, {
+      const response = await fetch(`https://apartment-lister-api.onrender.com/apartments/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export default class DatabaseService extends Service {
 
   async delete(id) {
     try {
-      const response = await fetch(`http://localhost:5000/apartments/${id}`, {
+      const response = await fetch(`https://apartment-lister-api.onrender.com/apartments/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export default class DatabaseService extends Service {
 
   async createApartment(name) {
     try {
-      const response = await fetch(`http://localhost:5000/apartments`, {
+      const response = await fetch(`https://apartment-lister-api.onrender.com/apartments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
