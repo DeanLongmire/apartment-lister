@@ -13,11 +13,12 @@ export default class CreateModalComponent extends Component {
     }
 
     @action
-    createApartment() {
+    async createApartment() {
         if(this.apartmentName) {
             this.args.close();
-            this.database.createApartment(this.apartmentName);
-            window.location.reload();
+            await this.database.createApartment(this.apartmentName).then(() => {
+                window.location.reload();
+            });
         }
     }
 
