@@ -22,9 +22,12 @@ export default class ApartmentTableComponent extends Component {
         return -1;
       }
 
-      if (a.rent < b.rent) {
+      const rentA = parseFloat(a.rent);
+      const rentB = parseFloat(b.rent);
+
+      if (rentA < rentB) {
         return -1;
-      } else if (a.rent > b.rent) {
+      } else if (rentA > rentB) {
         return 1;
       } else {
         return 0;
