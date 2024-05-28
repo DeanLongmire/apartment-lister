@@ -1,0 +1,7 @@
+{{#if this.createModalOpen}}
+    <CreateModal @close={{this.closeModal}} />
+{{/if}}
+
+<div style="margin-top: 10px; margin-left: 10%; width: 80%; padding: 3px; display: flex; align-items: center;">
+    <button class="table-add-button" type="button" onclick={{this.createModal}}>+</button>
+</div>

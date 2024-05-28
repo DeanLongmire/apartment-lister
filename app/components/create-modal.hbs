@@ -1,0 +1,12 @@
+<div class="create-modal">
+  <div class="create-modal-content">
+    Apartment Name
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex;">
+        <input type="text" class="modal-input" value={{this.apartmentName}} {{on "input" this.handleInput}}>
+        <div class="modal-close" onclick={{this.closeModal}}>&times;</div>
+      </div>
+    </div>
+    <button style="margin-top: 1%" type="button" onclick={{this.createApartment}}>Create</button>
+  </div>
+</div>

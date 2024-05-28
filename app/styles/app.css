@@ -1,4 +1,43 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+.create-modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0 0 0); /* Fallback color */
+  background-color: rgb(0 0 0 / 40%); /* Black w/ opacity */
+}
+
+.create-modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 2.5%;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-input {
+  width: 100%;
+}
+
 table,
 th,
 td {
@@ -25,8 +64,35 @@ td {
   background-color: palegreen;
 }
 
+.table-button-pressed:hover {
+  font-weight: bold;
+}
+
 .table-button:hover {
   font-weight: bold;
+}
+
+.table-add-button {
+  background-color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.table-add-button:hover {
+  border-style: double;
+  background-color: #ebebeb;
+}
+
+.table-drop-button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: white;
+}
+
+.table-drop-button:hover {
+  font-weight: bold;
+  background-color: #ebebeb;
 }
 
 .table-input {
