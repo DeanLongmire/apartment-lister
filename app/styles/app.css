@@ -126,7 +126,7 @@
   display: none;
 }
 
-@media (width <= 500px) {
+@media (width <= 1024px) {
   .card-body,
   .card-input-content,
   .card-input-groupings,
@@ -179,6 +179,10 @@
     padding-top: 15px;
   }
 
+  .dollar-sign {
+    font-size: 2vh;
+  }
+
   .mobile-table {
     border: 1px solid black;
     display: table-cell;
@@ -186,5 +190,9 @@
 
   .table-component {
     display: none;
+  }
+
+  .table-input {
+    font-size: 1.85vh;
   }
 }

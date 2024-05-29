@@ -1,6 +1,6 @@
 <div style="display: flex;">
   {{#if @rent}}
-    <label>$</label>
+    <label class="dollar-sign">$</label>
   {{/if}}
   <input type="text" class="table-input" value={{@value}} {{on "input" this.handleInput}} {{on "blur" this.update}}>
 </div>
