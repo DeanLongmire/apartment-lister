@@ -43,6 +43,11 @@
   background-color: #eee;
 }
 
+.sort-button-selected {
+  cursor: pointer;
+  background-color: #eee;
+}
+
 .table-button {
   height: 100%;
   width: 100%;

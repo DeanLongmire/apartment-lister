@@ -10,9 +10,54 @@ export default class ApartmentTableComponent extends Component {
   @tracked apartments = A(this.args.model);
   @tracked cardIsOpen = false;
   @tracked selectedApartment = '';
+  @tracked washerDryerFilter = false;
+  @tracked twoBathroomsFilter = false;
+  @tracked connectedBathroomsFilter = false;
+  @tracked porchFilter = false;
+  @tracked rentFilter = false;
+  @tracked nameFilter = true;
 
   constructor() {
     super(...arguments);
+  }
+
+  clearFilters() {
+    this.washerDryerFilter = false;
+    this.twoBathroomsFilter = false;
+    this.connectedBathroomsFilter = false;
+    this.porchFilter = false;
+    this.rentFilter = false;
+    this.nameFilter = false;
+  }
+
+  doSort() {
+    if(!(this.twoBathroomsFilter || this.washerDryerFilter || this.connectedBathroomsFilter || this.porchFilter)) {
+      this.sortByName();
+      return;
+    }
+
+    this.apartments = this.apartments.slice().sort((a, b) => {
+      let aCount = 0;
+      let bCount = 0;
+
+      if (a.washerDryer && this.washerDryerFilter) aCount++;
+      if (a.twoBathrooms && this.twoBathroomsFilter) aCount++;
+      if (a.connectedBathrooms && this.connectedBathroomsFilter) aCount++;
+      if (a.porch && this.porchFilter) aCount++;
+
+      if (b.washerDryer && this.washerDryerFilter) bCount++;
+      if (b.twoBathrooms && this.twoBathroomsFilter) bCount++;
+      if (b.connectedBathrooms && this.connectedBathroomsFilter) bCount++;
+      if (b.porch && this.porchFilter) bCount++;
+
+      if (aCount < bCount) {
+        return 1;
+      } else if (aCount > bCount) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   @action
@@ -28,6 +73,8 @@ export default class ApartmentTableComponent extends Component {
 
   @action
   sortByRent() {
+    this.clearFilters();
+    this.rentFilter = true;
     this.apartments = this.apartments.slice().sort((a, b) => {
       if (a.rent == '') {
         return 1;
@@ -50,6 +97,8 @@ export default class ApartmentTableComponent extends Component {
 
   @action
   sortByName() {
+    this.clearFilters();
+    this.nameFilter = true;
     this.apartments = this.apartments.slice().sort((a, b) => {
       if (a.name == '') {
         return 1;
@@ -68,23 +117,20 @@ export default class ApartmentTableComponent extends Component {
   }
 
   @action
-  sortByChecks() {
-    this.apartments = A(this.args.model);
+  advancedSort(filter) {
+    this.nameFilter = false;
+    this.rentFilter = false;
 
-    this.apartments = this.apartments.slice().sort((a, b) => {
-      if (a.numOfChecks == '') {
-        return 1;
-      } else if (b.numOfChecks == '') {
-        return -1;
-      }
+    if (filter == 'wd') {
+      this.washerDryerFilter = !this.washerDryerFilter;
+    } else if (filter == 'tb') {
+      this.twoBathroomsFilter = !this.twoBathroomsFilter;
+    } else if (filter == 'cb') {
+      this.connectedBathroomsFilter = !this.connectedBathroomsFilter;
+    } else if (filter == 'p') {
+      this.porchFilter = !this.porchFilter;
+    }
 
-      if (a.numOfChecks < b.numOfChecks) {
-        return 1;
-      } else if (a.numOfChecks > b.numOfChecks) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+    this.doSort();
   }
 }
